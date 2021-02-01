@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ringitup-dev-173400-authRole",
+      "UnauthRoleArn": "arn:aws:iam::842688509319:role/amplify-ringitup-dev-173400-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::842688509319:role/amplify-ringitup-dev-173400-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-ringitup-dev-173400-deployment",
+      "UnauthRoleName": "amplify-ringitup-dev-173400-unauthRole",
+      "StackName": "amplify-ringitup-dev-173400",
+      "StackId": "arn:aws:cloudformation:us-west-2:842688509319:stack/amplify-ringitup-dev-173400/90c61a60-642d-11eb-bfd0-0a7cc53ddc2b",
+      "AmplifyAppId": "d3dcud9lgkakzg"
+    },
+    "categories": {
+      "auth": {
+        "ringitup420affff": {}
+      }
+    }
+  }
+}

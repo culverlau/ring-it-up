@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "ringitup420affff": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
