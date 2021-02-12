@@ -1,0 +1,29 @@
+type Activity @aws_cognito_user_pools @aws_api_key {
+  id: ID!
+  title: String!
+  content: String!
+  username: String!
+}
+
+input ActivityInput {
+  id: ID!
+  title: String!
+  content: String!
+}
+
+input UpdateActivityInput {
+  id: ID!
+  title: String
+  content: String
+}
+
+type Query {
+  getActivityById(activityId: ID!): Activity @aws_cognito_user_pools @aws_api_key
+  listActivitys: [Activity] @aws_cognito_user_pools @aws_api_key
+}
+
+type Mutation {
+  createActivity(activity: ActivityInput!): Activity @aws_cognito_user_pools
+  updateActivity(activity: UpdateActivityInput!): Activity @aws_cognito_user_pools
+  deleteActivity(activityId: String!): String @aws_cognito_user_pools
+}

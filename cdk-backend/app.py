@@ -11,3 +11,4 @@ CdkBackendStack(app, "cdk-backend")
 app.synth()
 
 # https://github.com/dabit3/amplify-with-cdk/blob/main/cdk-backend/lib/cdk-backend-stack.ts
+# https://www.youtube.com/watch?v=rjiiNpJzOYk&ab_channel=NaderDabit
