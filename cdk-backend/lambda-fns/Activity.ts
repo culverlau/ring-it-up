@@ -5,4 +5,4 @@ type Activity = {
   username: string;
 }
 
-export default Post
+export default Activity

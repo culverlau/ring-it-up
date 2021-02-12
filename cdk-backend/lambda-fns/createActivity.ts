@@ -4,7 +4,7 @@ import Activity from './Activity';
 
 async function createActivity(activity: Activity) {
     const params = {
-        TableName: process.env.POST_TABLE,
+        TableName: process.env.ACTIVITY_TABLE,
         Item: activity
     }
     try {

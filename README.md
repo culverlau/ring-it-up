@@ -28,3 +28,8 @@ npm i -g aws-cdk
 source .venv/bin/activate
 cdk synth
 ```
+
+deployment
+```
+cdk deploy -O ../cdk-exports.json
+```

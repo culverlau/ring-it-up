@@ -3,7 +3,7 @@ const docClient = new AWS.DynamoDB.DocumentClient();
 
 async function getActivityById(activityId: String) {
     const params = {
-        TableName: process.env.POST_TABLE,
+        TableName: process.env.ACTIVITY_TABLE,
         Key: { id: activityId }
     }
     try {

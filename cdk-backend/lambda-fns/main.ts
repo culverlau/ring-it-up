@@ -1,7 +1,7 @@
 import createActivity from './createActivity';
 import deleteActivity from './deleteActivity';
 import getActivityById from './getActivityById';
-import listActivitys from './listActivitys';
+import listActivitiess from './listActivities';
 import updateActivity from './updateActivity';
 import Activity from './Activity';
 
@@ -10,8 +10,8 @@ type AppSyncEvent = {
      fieldName: string
   },
    arguments: {
-    postId: string,
-     post: Activity
+    activityId: string,
+     activity: Activity
   },
   identity: {
     sub : string;
@@ -23,15 +23,15 @@ exports.handler = async (event:AppSyncEvent) => {
     const username = event.identity?.username;
     switch (event.info.fieldName) {
         case "getActivityById":
-            return await getActivityById(event.arguments.postId);
+            return await getActivityById(event.arguments.activityId);
         case "createActivity":
-            return await createActivity({ ...event.arguments.post, username });
+            return await createActivity({ ...event.arguments.activity, username });
         case "listActivities":
             return await listActivities();
         case "deleteActivity":
-            return await deleteActivity(event.arguments.postId, username);
+            return await deleteActivity(event.arguments.activityId, username);
         case "updateActivity":
-            return await updateActivity(event.arguments.post, username);
+            return await updateActivity(event.arguments.activity, username);
         default:
             return null;
     }

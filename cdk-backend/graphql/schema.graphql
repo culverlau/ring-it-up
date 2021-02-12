@@ -19,7 +19,7 @@ input UpdateActivityInput {
 
 type Query {
   getActivityById(activityId: ID!): Activity @aws_cognito_user_pools @aws_api_key
-  listActivitys: [Activity] @aws_cognito_user_pools @aws_api_key
+  listActivities: [Activity] @aws_cognito_user_pools @aws_api_key
 }
 
 type Mutation {

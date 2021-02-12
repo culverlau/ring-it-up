@@ -26,7 +26,7 @@ class CdkBackendStack(core.Stack):
         api = aws_appsync.GraphqlApi(
             self, 'ring-it-up-api',
             name='ring-it-up-api',
-            # schema=None,
+            schema=aws_appsync.Schema.from_asset('graphql/schema.graphql'),
             authorization_config=aws_appsync.AuthorizationConfig(
                 default_authorization=aws_appsync.AuthorizationMode(
                     authorization_type=aws_appsync.AuthorizationType.API_KEY,
@@ -51,10 +51,54 @@ class CdkBackendStack(core.Stack):
         core.CfnOutput(self, "aws_appsync_authenticationType",
                        value=str(aws_appsync.AuthorizationType.API_KEY))
 
-        blogLambda = aws_lambda.Function(
+        api_lambda = aws_lambda.Function(
             self, 'AppSyncBlogHandler',
             runtime=aws_lambda.Runtime.NODEJS_12_X,
             handler='main.handler',
-            code=aws_lambda.Code.fromAsset('lambda-fns'),
-            memorySize=1024
+            code=aws_lambda.Code.from_asset('lambda-fns'),
+            memory_size=1024
         )
+
+        # Set the new Lambda function as a data source for the AppSync API
+        lambda_datasource = api.add_lambda_data_source('lambdaDatasource', api_lambda)
+
+        lambda_datasource.create_resolver(
+            type_name="Query",
+            field_name="getActivityById"
+        )
+
+        lambda_datasource.create_resolver(
+            type_name="Query",
+            field_name="listActivities"
+        )
+
+        lambda_datasource.create_resolver(
+            type_name="Mutation",
+            field_name="createActivity"
+        )
+
+        lambda_datasource.create_resolver(
+            type_name="Mutation",
+            field_name="deleteActivity"
+        )
+
+        lambda_datasource.create_resolver(
+            type_name="Mutation",
+            field_name="updateActivity"
+        )
+
+        activity_table = aws_dynamodb.Table(
+            self, 'CDKPostTable',
+            removal_policy=core.RemovalPolicy.DESTROY,
+            billing_mode=aws_dynamodb.BillingMode.PAY_PER_REQUEST,
+            partition_key={
+                "name": 'id',
+                "type": aws_dynamodb.AttributeType.STRING,
+            }
+        )
+
+        # enable the Lambda function to access the DynamoDB table (using IAM)
+        activity_table.grant_full_access(api_lambda)
+
+        # Create an environment variable that we will use in the function code
+        api_lambda.add_environment('ACTIVITY_TABLE', activity_table.table_name)

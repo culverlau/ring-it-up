@@ -3,7 +3,7 @@ const docClient = new AWS.DynamoDB.DocumentClient();
 
 async function deleteActivity(activityId: string, username: string) {
     const params = {
-        TableName: process.env.POST_TABLE,
+        TableName: process.env.ACTIVITY_TABLE,
         Key: {
           id: activityId
         },

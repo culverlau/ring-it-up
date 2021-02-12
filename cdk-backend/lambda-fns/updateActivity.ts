@@ -13,7 +13,7 @@ interface Params {
 
 async function updateActivity(activity: any, username: string) {
   let params : Params = {
-    TableName: process.env.POST_TABLE,
+    TableName: process.env.ACTIVITY_TABLE,
     Key: {
       id: activity.id
     },

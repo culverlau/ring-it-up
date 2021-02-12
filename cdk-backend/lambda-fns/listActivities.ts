@@ -3,7 +3,7 @@ const docClient = new AWS.DynamoDB.DocumentClient();
 
 async function listActivities() {
     const params = {
-        TableName: process.env.POST_TABLE,
+        TableName: process.env.ACTIVITY_TABLE,
     }
     try {
         const data = await docClient.scan(params).promise()
