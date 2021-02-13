@@ -28,7 +28,7 @@ function App() {
     //   </AuthProvider>
     // </NavigationContainer>
     <View style={styles.container}>
-      <Text> + = React Native + Amplify </Text>
+      <Text> Home page! Ring it up! </Text>
       <Button title="Sign Out" color="tomato" onPress={signOut} />
       <StatusBar style='auto' />
     </View>
