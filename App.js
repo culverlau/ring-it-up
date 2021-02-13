@@ -1,58 +1,47 @@
 import React from 'react';
-import { StyleSheet, Text, View, AsyncStorage } from 'react-native'
+import { StyleSheet, View, Text, Button, StatusBar } from 'react-native';
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createStackNavigator } from '@react-navigation/stack';
 
-import { createAppContainer, createSwitchNavigator } from 'react-navigation'
-import { createStackNavigator } from 'react-navigation-stack'
+import Amplify, { Auth } from 'aws-amplify';
+import config from './aws-exports';
+import { withAuthenticator } from 'aws-amplify-react-native';
+Amplify.configure(config);
 
-import AuthLoadingScreen from './src/components/screens/AuthLoadingScreen'
-import WelcomeScreen from './src/components/screens/WelcomeScreen'
-import SignUpScreen from './src/components/screens/SignUpScreen'
-import SignInScreen from './src/components/screens/SignInScreen'
-import ForgotPasswordScreen from './src/components/screens/ForgotPasswordScreen'
+// import { AuthProvider } from './src/contexts/authContext';
 
-const AuthStackNavigator = createStackNavigator({
-  Welcome: {
-    screen: WelcomeScreen,
-    navigationOptions: () => ({
-      title: `Welcome to this App`,
-      headerBackTitle: 'Back'
-    }),
-  },
-  SignUp: {
-    screen: SignUpScreen,
-    navigationOptions: () => ({
-      title: `Create a new account`,
-    }),
-  },
-  SignIn: {
-    screen: SignInScreen,
-    navigationOptions: () => ({
-      title: `Log in to your account`,
-    }),
-  },
-  ForgotPassword: {
-    screen: ForgotPasswordScreen,
-    navigationOptions: () => ({
-      title: `Create a new password`,
-    }),
-  },
-})
+// import SplashScreen from './src/screens/SplashScreen';
+// import AppNavigator from './src/navigation/AppNavigator';
 
-const NavSwitch = createSwitchNavigator({
-  AuthLoading: AuthLoadingScreen,
-  Auth: AuthStackNavigator
-})
+function App() {
+  async function signOut() {
+    try {
+      await Auth.signOut();
+    } catch (error) {
+      console.log('Error signing out: ', error);
+    }
+  }
+  return (
+    // <NavigationContainer>
+    //   <AuthProvider>
+    //     <AppNavigator />
+    //   </AuthProvider>
+    // </NavigationContainer>
+    <View style={styles.container}>
+      <Text> + = React Native + Amplify </Text>
+      <Button title="Sign Out" color="tomato" onPress={signOut} />
+      <StatusBar style='auto' />
+    </View>
+  );
+}
 
-// Change back to NavSwitch
-const App = createAppContainer(AuthStackNavigator)
-
-export default App
+export default withAuthenticator(App);
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#aa73b7',
     alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
+    justifyContent: 'center',
+  },
+});

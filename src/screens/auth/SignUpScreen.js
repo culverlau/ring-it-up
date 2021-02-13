@@ -10,7 +10,7 @@ import {
 
 import Amplify from '@aws-amplify/core'
 import {Authenticator} from 'aws-amplify-react-native'
-import config from "../../../aws-exports"
+import config from "../../aws-exports"
 
 Amplify.configure(config)
 
