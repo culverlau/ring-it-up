@@ -16,5 +16,23 @@
         "ringitup420affff": {}
       }
     }
+  },
+  "devculver": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ringitup-devculver-184008-authRole",
+      "UnauthRoleArn": "arn:aws:iam::375636861788:role/amplify-ringitup-devculver-184008-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::375636861788:role/amplify-ringitup-devculver-184008-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-ringitup-devculver-184008-deployment",
+      "UnauthRoleName": "amplify-ringitup-devculver-184008-unauthRole",
+      "StackName": "amplify-ringitup-devculver-184008",
+      "StackId": "arn:aws:cloudformation:us-east-2:375636861788:stack/amplify-ringitup-devculver-184008/a53ef360-6d8b-11eb-b887-0655e78223a6",
+      "AmplifyAppId": "d301lkpueejhnx"
+    },
+    "categories": {
+      "auth": {
+        "ringitup420affff": {}
+      }
+    }
   }
 }

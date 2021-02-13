@@ -43,7 +43,8 @@ const NavSwitch = createSwitchNavigator({
   Auth: AuthStackNavigator
 })
 
-const App = createAppContainer(NavSwitch)
+// Change back to NavSwitch
+const App = createAppContainer(AuthStackNavigator)
 
 export default App
 

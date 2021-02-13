@@ -19,6 +19,7 @@ https://medium.com/capgemini-norway/destroying-backends-with-amplify-appsync-gra
 We use AWS Amplify
 ```
 npm i -g @aws-amplify/cli
+amplify init
 amplify push
 ```
 
