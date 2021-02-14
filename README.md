@@ -1,7 +1,6 @@
 # Ring it Up
 Ring it Up is an app used to track exercise and compete with friends in workout volume and quantity.
-The app is built in React Native built with [Expo](https://expo.io/), connected via [Amplify](https://aws.amazon.com/amplify/) to an AWS Backend deployed with [CDK](https://aws.amazon.com/cdk/) running a [lambda]
-(https://aws.amazon.com/lambda/)-backed [GraphQL](https://graphql.org/) API managed via [AppSync](https://aws.amazon.com/appsync/).
+The app is built in React Native built with [Expo](https://expo.io/), connected via [Amplify](https://aws.amazon.com/amplify/) to an AWS Backend deployed with [CDK](https://aws.amazon.com/cdk/) running a [lambda](https://aws.amazon.com/lambda/)-backed [GraphQL](https://graphql.org/) API managed via [AppSync](https://aws.amazon.com/appsync/).
 
 ## Dev Setup
 Clone the repo and navigate to it.
