@@ -1,33 +1,47 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+// import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
-import SplashScreen from '../screens/auth/SplashScreen';
-import SignInScreen from '../screens/auth/SignInScreen';
-import SignUpScreen from '../screens/auth/SignUpScreen';
-import ForgotPasswordScreen from '../screens/auth/ForgotPasswordScreen';
 import HomeScreen from '../screens/HomeScreen';
+import TeamScreen from '../screens/TeamScreen';
+import ProfileScreen from '../screens/ProfileScreen';
+import CreatePostScreen from '../screens/CreatePostScreen';
 
-const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function AppNavigator() {
-  <Stack.Navigator>
-    {state.userToken == null ? (
-      <>
-        <Stack.Screen
-          name='SignIn'
-          component={SignInScreen}
-          options={{
-            title: 'Sign In',
-            animationTypeForReplace: state.isSignout ? 'pop' : 'push',
-          }}
-        />
-        <Stack.Screen name='SignUp' component={SignUpScreen} />
-        <Stack.Screen name='ForgetPassword' component={ForgetPasswordScreen} />
-      </>
-    ) : (
-      <>
-        <Stack.Screen name='Home' component={HomeScreen} />
-      </>
-    )}
-  </Stack.Navigator>;
+  return (
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+
+          if (route.name === 'Home') {
+            iconName = focused
+              ? 'home'
+              : 'home-outline';
+          } else if (route.name === 'Team') {
+            iconName = focused ? 'stats-chart-outline' : 'stats-chart';
+          } else if (route.name === 'Profile') {
+            iconName = focused ? 'person-outline' : 'person';
+          } else if (route.name === 'Create Post') {
+            iconName = focused ? 'add-circle-outline' : 'add-circle';
+          }
+
+          // You can return any component that you like here!
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+      })}
+      tabBarOptions={{
+        activeTintColor: 'tomato',
+        inactiveTintColor: 'gray',
+      }}
+    >
+      <Tab.Screen name='Home' component={HomeScreen} />
+      <Tab.Screen name='Team' component={TeamScreen} />
+      <Tab.Screen name='Profile' component={ProfileScreen} />
+      <Tab.Screen name='Create Post' component={CreatePostScreen} />
+    </Tab.Navigator>
+  );
 }

@@ -6,15 +6,20 @@ import {
   Button,
 } from 'react-native'
 
-// import { AuthContext } from '../../authContext';
+import { Auth } from 'aws-amplify';
 
 function HomeScreen() {
-  // const { signOut } = React.useContext(AuthContext)
-
+  async function signOut() {
+    try {
+      await Auth.signOut();
+    } catch (error) {
+      console.log('Error signing out: ', error);
+    }
+  }
   return(
       <View style={styles.container}>
-        <Text>Wonderful stuff here</Text>
-        <Button title="Log Out" />
+        <Text>Home page! Ring it up!</Text>
+        <Button title="Sign Out" color="tomato" onPress={signOut} />
       </View>
   )
 }

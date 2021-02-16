@@ -6,16 +6,16 @@ import {
   Button,
 } from 'react-native'
 
-function ProfileScreen() {
+function CreatePostScreen() {
 
   return(
       <View style={styles.container}>
-        <Text>Profile Screen</Text>
+        <Text>Create Post Here</Text>
       </View>
   )
 }
 
-export default ProfileScreen
+export default CreatePostScreen
 
 const styles = StyleSheet.create({
   container: {

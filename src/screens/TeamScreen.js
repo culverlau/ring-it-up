@@ -6,16 +6,16 @@ import {
   Button,
 } from 'react-native'
 
-function ProfileScreen() {
+function TeamScreen() {
 
   return(
       <View style={styles.container}>
-        <Text>Profile Screen</Text>
+        <Text>Team Screen</Text>
       </View>
   )
 }
 
-export default ProfileScreen
+export default TeamScreen
 
 const styles = StyleSheet.create({
   container: {
