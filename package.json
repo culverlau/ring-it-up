@@ -20,6 +20,7 @@
     "aws-amplify": "^3.3.18",
     "aws-amplify-react-native": "^4.3.1",
     "expo": "^40.0.1",
+    "formik": "^2.2.6",
     "native-base": "^2.15.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

@@ -38,7 +38,7 @@ export default function AppNavigator() {
         inactiveTintColor: 'gray',
       }}
     >
-      <Tab.Screen name='Home' component={HomeScreen} />
+      <Tab.Screen name='Home' component={HomeScreen} options={{ tabBarBadge: 3 }} />
       <Tab.Screen name='Team' component={TeamScreen} />
       <Tab.Screen name='Profile' component={ProfileScreen} />
       <Tab.Screen name='Create Post' component={CreatePostScreen} />
